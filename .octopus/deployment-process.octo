@@ -1,0 +1,109 @@
+process {
+    Id = "deploymentprocess-Projects-1"
+    OwnerId = "Projects-1"
+    IsFrozen = false
+    Version = 1
+    SpaceId = "Spaces-1"
+    Steps {
+        deploy_a_package {
+            Id = "bda95019-c6ae-4c06-bd05-fd9a1d7499a6"
+            Name = "Deploy a Package"
+            Condition = "Success"
+            StartTrigger = "StartAfterPrevious"
+            PackageRequirement = "LetOctopusDecide"
+            Actions {
+                deploy_a_package {
+                    Id = "e06dcdc8-9378-454f-ad79-9199550eda44"
+                    Name = "Deploy a Package"
+                    ActionType = "Octopus.TentaclePackage"
+                    WorkerPoolVariable = ""
+                    Container {
+                    }
+                    IsDisabled = false
+                    IsRequired = false
+                    Environments = []
+                    ExcludedEnvironments = []
+                    Channels = []
+                    TenantTags = []
+                    Packages {
+                        item {
+                            Id = "fc6701ac-7b84-4975-b45c-e5898fdbd679"
+                            Name = ""
+                            PackageId = "apache-jmeter-5"
+                            FeedId = "feeds-builtin"
+                            AcquisitionLocation = "Server"
+                            Properties {
+                                selectionmode {
+                                    Key = "SelectionMode"
+                                    Value = "immediate"
+                                }
+                            }
+                        }
+                    }
+                    Condition = "Success"
+                    Properties {
+                        octopus.action.package.automaticallyrunconfigurationtransformationfiles {
+                            Key = "Octopus.Action.Package.AutomaticallyRunConfigurationTransformationFiles"
+                            Value {
+                                Value = "True"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.package.automaticallyupdateappsettingsandconnectionstrings {
+                            Key = "Octopus.Action.Package.AutomaticallyUpdateAppSettingsAndConnectionStrings"
+                            Value {
+                                Value = "True"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.enabledfeatures {
+                            Key = "Octopus.Action.EnabledFeatures"
+                            Value {
+                                Value = "Octopus.Features.ConfigurationTransforms,Octopus.Features.ConfigurationVariables"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.package.packageid {
+                            Key = "Octopus.Action.Package.PackageId"
+                            Value {
+                                Value = "apache-jmeter-5"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.package.feedid {
+                            Key = "Octopus.Action.Package.FeedId"
+                            Value {
+                                Value = "feeds-builtin"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                        octopus.action.package.downloadontentacle {
+                            Key = "Octopus.Action.Package.DownloadOnTentacle"
+                            Value {
+                                Value = "False"
+                                IsSensitive = false
+                                HasValue = true
+                            }
+                        }
+                    }
+                }
+            }
+            Properties {
+                octopus.action.targetroles {
+                    Key = "Octopus.Action.TargetRoles"
+                    Value {
+                        Value = "dev"
+                        IsSensitive = false
+                        HasValue = true
+                    }
+                }
+            }
+        }
+    }
+    RelatedDocumentIds = []
+}
